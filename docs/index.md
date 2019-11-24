@@ -35,7 +35,7 @@ Unicode is a character encoding standard developed to address the described issu
 Using the standard, any text can be encoded as a sequence of code points. The table below shows an example of such encoding for the text "Hooray!":
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/table-1.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/table-1.png?raw=true">
 </p>
 
 Similarly, this sequence of code points can be decoded into the initial Unicode characters.
@@ -47,7 +47,7 @@ The term *character* is usually understood as something that represents a letter
 Note that we mentioned neither about how Unicode characters are represented in computer memory nor how they are displayed on a screen. In the Unicode standard, the ways how characters are assigned to code points, how code points are transformed into a sequence of bytes and how characters are displayed, are separated from each other. The figure below illustrates this principle:
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/unicode-architecture.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/unicode-architecture.png?raw=true">
 </p>
 
 There is only one Latin capital letter Z with a unique code-point `U+005A`. Yet, there are several ways to draw the letter on a screen, as well a few ways to transform it into a sequence of bytes. Two widely used transformations are **UTF-8** and **UTF-16**, which are the subject to discuss next.
@@ -59,7 +59,7 @@ There is only one Latin capital letter Z with a unique code-point `U+005A`. Yet,
 UTF-8 (8-bit Unicode Transformation Format) is one of the encodings for transforming code points into a sequence of bytes. The encoding has a variable size: depending on the code point, a character might require from 1 to 4 bytes to be encoded. The smaller the code point, the fewer number of bytes is needed. The following table shows the encoding structure:
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/table-2.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/table-2.png?raw=true">
 </p>
 
 The first column represents four ranges that cover all the code points. The second column shows the maximum number of bits a code point from the corresponding range may contain. The rest four columns describe the binary representation of encoded code point. The first byte is called a **leading byte**, each of the rest is a **continuation byte**.
@@ -75,7 +75,7 @@ To encode a code point, we need to identify the range the code point belongs to,
 As an example, let's consider how to encode the square root character that has the `U+221A` code point. The binary representation of the code point is 100010 00011010. Since the code point belongs to the third range, we need 3 bytes to encode it. Below is how encoding looks like:
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/table-3.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/table-3.png?raw=true">
 </p>
 
 The bits of the character are shown in blue. The bits shown in red correspond to high bits of the leading and continuation bytes. Since the number of bits for the 3rd scheme is 16, we added two additional bits to the binary representation. These bits are shown in black.
@@ -113,7 +113,7 @@ Finally, we need to get the first 10 bits and add `DC00` to them to get a low su
 The table below represents the obtained encoding:
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/table-4.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/table-4.png?raw=true">
 </p>
 
 ### <a name="About-endianness"></a>About endianness
@@ -128,7 +128,7 @@ To correctly display text encoded using UTF-16, we need to know the type of endi
 Taking endianness into account, the complete encoding of the `U+1F745` code point is as follows:
 
 <p align="center">
-    <img src="https://github.com/epolevikov/test-repo/blob/master/images/table-5.png?raw=true">
+    <img src="https://github.com/epolevikov/unicode-overview/blob/master/images/table-5.png?raw=true">
 </p>
 
 # <a name="Comparing-UTF-8-and-UTF-16"></a>Comparing UTF-8 and UTF-16
